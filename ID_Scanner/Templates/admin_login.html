@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Admin Login</h1>
+
+    <!-- Admin Login Form -->
+    <form action="/admin_login" method="POST">
+        <label for="admin_id">Enter Admin ID:</label>
+        <input type="text" id="admin_id" name="admin_id" required><br>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p>Enter the correct admin ID to access the admin page.</p>
+</body>
+</html>

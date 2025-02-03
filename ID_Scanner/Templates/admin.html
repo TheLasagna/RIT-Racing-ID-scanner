@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Inventory Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    
+    <!-- Check if admin ID is provided -->
+    {% if request.args.get('id') == 'admin123' %}
+        <h2>Current Inventory:</h2>
+        
+        <ul>
+            <!-- Loop through the data list and display each student's borrowed items -->
+            {% for student in data %}
+                <li>
+                    Student ID: {{ student[0] }} | Items Borrowed:
+                    {% if student[1:] %}
+                        {% for item in student[1:] %}
+                            <br>
+                            <a href="{{ url_for('uploaded_file', filename=item) }}" target="_blank">{{ item }}</a>
+                        {% endfor %}
+                    {% else %}
+                        No items borrowed.
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <a href="/">Go back to the main page</a>
+    {% else %}
+        <p>Unauthorized access. Please provide a valid admin ID.</p>
+    {% endif %}
+</body>
+</html>
